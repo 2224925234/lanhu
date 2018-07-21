@@ -1,0 +1,64 @@
+1、导依赖
+    compile 'com.eftimoff:android-pathview:1.0.8@aar'
+2.布局
+xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+android:fitsSystemWindows="true"
+3、控件
+   PathView
+   
+   
+   app:pathColor="@color/colorAccent"
+        app:pathWidth="3dp"
+        app:svg="@raw/q" //SVG图m     不能是大写
+		
+https://www.online-convert.com/		矢量图生成器网站
+
+
+http://iconfont.cn/   阿里矢量图库
+
+
+实现代码
+1.获取控件
+ 2.pv.getPathAnimator()
+                .delay(400)//几秒画一次
+                .duration(4000)//画多久
+                .listenerEnd(new PathView.AnimatorBuilder.ListenerEnd() {
+                    @Override
+                    //listenerEnd用这个方法控制此Activity跳转
+                    public void onAnimationEnd() {
+                        startActivity(new Intent(MainActivity.this, Main2Activity.class));
+                    }
+                })
+                .interpolator(new AccelerateDecelerateInterpolator())
+
+                .start();
+
+				
+	https://www.online-convert.com/result/124b07ea-6f4a-4984-a90b-b01f8976981c
+liu 21:19:28
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jiyun_androidfire_master2.com.myapplication.Main2Activity">
+    <com.eftimoff.androipathview.PathView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/path_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:pathColor="#A7A3A3"
+        app:pathWidth="1dp"
+        app:svg="@raw/ss" />
+</RelativeLayout>
+
+liu 21:20:34
+pathView.getPathAnimator().delay(100).duration(10000).listenerEnd(new PathView.AnimatorBuilder.ListenerEnd() {
+    @Override
+    public void onAnimationEnd() {
+        startActivity(new Intent(Main2Activity.this,MainActivity.class));
+    }
+}).start();
